@@ -1,5 +1,5 @@
-Handwritten Recognition with Support Vector Machine (SVM)
-This project is focused on building a handwriting recognition model using SVM. We will be using the A_Z dataset for training and testing our model.
+Handwritten Alphabet Recognition
+This project focuses on recognizing handwritten alphabets using the LinearSVC model from Scikit-learn. The dataset is extracted from a CSV file that contains pixel values of images along with their corresponding labels.
 
 Table of Contents
 Define function
@@ -10,40 +10,47 @@ Flattening The Image
 Train Test Splitting
 Pipelining
 Evaluation
-Precision, Recall, F1-score and Accuracy
-Save the model
-Load the model
-Define function <a name="define-function"></a>
-We've defined three main functions:
+Precision, Recall, F1-score, and Accuracy
+Save the Model
+Load the Model
+Prerequisites
+The following libraries and extensions are used:
 
-csv_to_image: This function converts a CSV containing images to an actual image saved in a folder.
-load_image: Loads images from a directory and stacks them into a numpy array.
-csv_to_array: Instead of saving images, this directly loads images from a CSV and stacks them into a numpy array.
-Data Preparation <a name="data-preparation"></a>
-Load Data <a name="load-data"></a>
-We've taken the dataset from a CSV format and converted it into actual images. Additionally, the dataset can also be loaded directly into a numpy array.
+csv
+numpy
+os
+string
+pickle
+PIL from Image
+sklearn
+sklearnex
+matplotlib
+1. Define function
+Three key functions are defined:
 
-Modeling <a name="modeling"></a>
-The images were first flattened to fit the SVM model. The dataset was then divided into training and testing sets. We utilized the Intel Extension for scikit-learn for faster execution.
+csv_to_image: This function loads images from a CSV file and saves them as individual image files in folders categorized by their labels.
+load_image: This function loads images from a directory and returns them as a stacked numpy array along with their labels.
+csv_to_array: This function loads images from a CSV file and returns them as a stacked numpy array for handwritten recognition.
+2. Data Preparation
+Images are extracted from the given CSV file and saved as individual image files in their respective folders.
 
-Flattening The Image <a name="flattening-the-image"></a>
-The images needed to be flattened (from 2D to 1D) before feeding them into the SVM model.
+3. Modeling
+Flattening The Image
+To make the image data suitable for training using LinearSVC, the images are flattened.
 
-Train Test Splitting <a name="train-test-splitting"></a>
-The dataset was divided into an 80-20 split for training and testing respectively.
+Train Test Splitting
+The dataset is split into a training set and a testing set with an 80-20 split.
 
-Pipelining <a name="pipelining"></a>
-A pipeline was created, comprising of scaling and the SVM classifier.
+Pipelining
+For efficient training and preprocessing, a pipeline is created which first standardizes the data using StandardScaler and then trains it using LinearSVC.
 
-Evaluation <a name="evaluation"></a>
-The model was evaluated using various metrics such as precision, recall, f1-score, and accuracy.
+4. Evaluation
+The model's predictions on the test data are evaluated using metrics like precision, recall, F1-score, and accuracy.
 
-Precision, Recall, F1-score and Accuracy <a name="precision-recall-f1-score-and-accuracy"></a>
-The SVM model provided an accuracy of approximately 85%.
+5. Save the Model
+The trained model is saved to the disk using pickle.
 
-Save the model <a name="save-the-model"></a>
-Post training, the model was saved onto the disk using the pickle module.
+6. Load the Model
+The saved model can be loaded back for inference or further training.
 
-Load the model <a name="load-the-model"></a>
-The saved model can be loaded from the disk for future predictions.
-
+Note: Make sure to have the required CSV file and folders for image storage in the mentioned paths before running the code.
